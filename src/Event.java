@@ -3,9 +3,9 @@ public class Event {
     String eventManager = null;
     boolean visibleOrHidden = true;
 
-    public Event(String eventManager, String eventName, boolean visibleOrHidden) {
-        this.eventManager = eventManager;
+    public Event(String eventName, String eventManager, boolean visibleOrHidden) {
         this.eventName = eventName;
+        this.eventManager = eventManager;
         this.visibleOrHidden = visibleOrHidden;
     }
 

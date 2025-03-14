@@ -1,7 +1,7 @@
 import java.util.Scanner;
 public class EventManager {
     static Scanner Scan = new Scanner(System.in);
-    static Event[] eventList = new Event[10];
+    Event[] eventList = new Event[10];
     
     EventManager(){
         boolean flag = true;
@@ -36,7 +36,7 @@ public class EventManager {
         String eventName = Scan.nextLine();
         System.out.println("이벤트 담당자 이름을 입력하세요");
         String eventManagerId = Scan.nextLine();
-        int assignedEventCount = isEventLimitReached(eventManagerId);
+        int assignedEventCount = eventLimitReached(eventManagerId);
         if(assignedEventCount < 2){
             System.out.println("공개/비공개 여부를 선택하세요");
             System.out.println("1.공개 2.비공개");
@@ -46,12 +46,12 @@ public class EventManager {
             if(selectVisibleOrHidden == 2){
                 visibleOrHidden = false;
             }
-            Event event = new Event(eventName, eventManagerId, visibleOrHidden);
+            Event e = new Event(eventName, eventManagerId, visibleOrHidden);
 
             for(int i = 0; i < eventList.length; i++){
                 if(eventList[i] == null){
-                    eventList[i] = event;
-                    System.out.println("등록을 완료했습니다.");
+                    eventList[i] = e;
+                    System.out.println("등록을 완료했습니다." + eventList[i].eventName) ;
                     break;
                 }
             }
@@ -60,12 +60,14 @@ public class EventManager {
         }
     }
 
-    private int isEventLimitReached(String eventManagerIdCount) {
+   private int eventLimitReached(String n) {
         int managerCount = 0;
         for(int i = 0; i < eventList.length; i++){
             if(eventList[i] != null){
-                if(eventList[i].eventManager.equals(eventManagerIdCount)){
+                if(eventList[i].getEventManager().equals(n)){
                     managerCount++;
+
+
                 }
             }
         }
@@ -107,7 +109,7 @@ public class EventManager {
         for(int i = 0; i < eventList.length; i++){
             if(eventList[i] != null){
                 eventList[i].prt();
-                break;
+
             }
         }
     }
