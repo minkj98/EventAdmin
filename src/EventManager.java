@@ -1,7 +1,7 @@
 import java.util.Scanner;
 public class EventManager {
     static Scanner Scan = new Scanner(System.in);
-    Event[] eventList = new Event[10];
+    static Event[] eventList = new Event[10];
     
     EventManager(){
         boolean flag = true;
